@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import EmployeeList from "./employee/EmployeeList";  // Import EmployeeList component
 import LocationList from "./Location/LocationList";
 import AnimalList from "./animals/AnimalList";
-import Joke from "./Joke/Joke";
+import "./Kennel.css";
 
 
 export default class Kennel extends Component {
@@ -30,35 +30,16 @@ export default class Kennel extends Component {
         employees: this.employeesFromAPI,
         locations: this.locationsFromAPI,
         animals: this.animalsFromAPI,
-        "id": 75,
-        "type": "general",
-        "setup": "What do you give to a lemon in need?",
-        "punchline": "Lemonaid."
-    }
-
-    setNewJokeState = (jokeObj) => {
-        this.setState({
-            id: jokeObj.id,
-            type: jokeObj.type,
-            setup: jokeObj.setup,
-            punchline: jokeObj.punchline
-        })
     }
 
     render() {
         return (
-            <div>
-                <h3>Student Kennels</h3>
+            <div className="kennel">
                 <LocationList locations={this.state.locations} />
                 <br />
                 <EmployeeList employees={this.state.employees} />
                 <br />
                 <AnimalList animals={this.state.animals} />
-                <hr />
-                <Joke type={this.state.type}
-                    setup={this.state.setup}
-                    punchline={this.state.punchline}
-                    setNewJokeState={this.setNewJokeState} />
             </div>
         );
     }
