@@ -3,6 +3,7 @@ import React, { Component } from "react"
 import AnimalList from './animals/AnimalList'
 import LocationList from './Location/LocationList'
 import EmployeeList from './employee/EmployeeList'
+import OwnerList from "./Owners/OwnerList"
 import "./Kennel.css"
 
 
@@ -28,10 +29,18 @@ export default class ApplicationViews extends Component {
         { id: 6, name: "Checkers" }
     ]
 
+    ownersFromAPI = [
+        { id: 1, name: "Ricky McConnell", phoneNumber: "330-867-5309" },
+        { id: 2, name: "Rob Keller", phoneNumber: "123-456-7890" },
+        { id: 3, name: "Steven Soundlee", phoneNumber: "765-345-567" },
+        { id: 4, name: "Kelly Whitmer", phoneNumber: "546-764-1035" }
+    ]
+
     state = {
         employees: this.employeesFromAPI,
         locations: this.locationsFromAPI,
-        animals: this.animalsFromAPI
+        animals: this.animalsFromAPI,
+        owners: this.ownersFromAPI
     }
 
     render() {
@@ -45,6 +54,9 @@ export default class ApplicationViews extends Component {
                 }} />
                 <Route path="/employees" render={(props) => {
                     return <EmployeeList employees={this.state.employees} />
+                }} />
+                <Route path="/owners" render={(props) => {
+                    return <OwnerList owners={this.state.owners} />
                 }} />
             </React.Fragment>
         )
