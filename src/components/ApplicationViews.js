@@ -6,6 +6,8 @@ import EmployeeList from './employee/EmployeeList'
 import OwnerList from "./Owners/OwnerList"
 import AnimalManager from "../modules/AnimalManager"
 import EmployeeManager from "../modules/EmployeeManager"
+import LocationManager from "../modules/LocationsManager"
+import OwnerManager from "../modules/OwnersManager"
 import "./Kennel.css"
 
 
@@ -25,7 +27,7 @@ export default class ApplicationViews extends Component {
 
     state = {
         employees: [],
-        locations: this.locationsFromAPI,
+        locations: [],
         animals: [],
         owners: this.ownersFromAPI
     }
@@ -45,7 +47,11 @@ export default class ApplicationViews extends Component {
             .then(animals => { newState.animals = animals })
             .then(EmployeeManager.getAll()
                 .then(employees => { newState.employees = employees })
-                .then(() => this.setState(newState)))
+                .then(LocationManager.getAll()
+                    .then(locations => { newState.locations = locations })
+                    .then(OwnerManager.getAll()
+                        .then(owners => { newState.owners = owners })
+                        .then(() => this.setState(newState)))))
     }
 
     render() {
