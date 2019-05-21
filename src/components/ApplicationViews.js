@@ -4,29 +4,18 @@ import AnimalList from './animals/AnimalList'
 import LocationList from './Location/LocationList'
 import EmployeeList from './employee/EmployeeList'
 import OwnerList from "./Owners/OwnerList"
+import AnimalManager from "../modules/AnimalManager"
+import EmployeeManager from "../modules/EmployeeManager"
+import LocationManager from "../modules/LocationsManager"
+import OwnerManager from "../modules/OwnersManager"
 import "./Kennel.css"
 
 
 export default class ApplicationViews extends Component {
-    employeesFromAPI = [
-        { id: 1, name: "Jessica Younker" },
-        { id: 2, name: "Jordan Nelson" },
-        { id: 3, name: "Zoe LeBlanc" },
-        { id: 4, name: "Blaise Roberts" }
-    ]
 
     locationsFromAPI = [
         { id: 1, name: "Nashville North", address: "500 Circle Way" },
         { id: 2, name: "Nashville South", address: "10101 Binary Court" }
-    ]
-
-    animalsFromAPI = [
-        { id: 1, name: "Doodles" },
-        { id: 2, name: "Jack" },
-        { id: 3, name: "Angus" },
-        { id: 4, name: "Henley" },
-        { id: 5, name: "Derkins" },
-        { id: 6, name: "Checkers" }
     ]
 
     ownersFromAPI = [
@@ -37,10 +26,32 @@ export default class ApplicationViews extends Component {
     ]
 
     state = {
-        employees: this.employeesFromAPI,
-        locations: this.locationsFromAPI,
-        animals: this.animalsFromAPI,
+        employees: [],
+        locations: [],
+        animals: [],
         owners: this.ownersFromAPI
+    }
+
+    deleteAnimal = (id) => {
+        const newState = {};
+        AnimalManager.deleteAnimal(id)
+            .then(() => AnimalManager.getAll())
+            .then(animals => { newState.animals = animals })
+            .then(() => this.setState(newState))
+    }
+
+
+    componentDidMount() {
+        const newState = {}
+        AnimalManager.getAll()
+            .then(animals => { newState.animals = animals })
+            .then(EmployeeManager.getAll()
+                .then(employees => { newState.employees = employees })
+                .then(LocationManager.getAll()
+                    .then(locations => { newState.locations = locations })
+                    .then(OwnerManager.getAll()
+                        .then(owners => { newState.owners = owners })
+                        .then(() => this.setState(newState)))))
     }
 
     render() {
@@ -50,7 +61,8 @@ export default class ApplicationViews extends Component {
                     return <LocationList locations={this.state.locations} />
                 }} />
                 <Route path="/animals" render={(props) => {
-                    return <AnimalList animals={this.state.animals} />
+                    return <AnimalList animals={this.state.animals}
+                        deleteAnimal={this.deleteAnimal} />
                 }} />
                 <Route path="/employees" render={(props) => {
                     return <EmployeeList employees={this.state.employees} />
