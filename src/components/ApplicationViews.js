@@ -4,6 +4,7 @@ import AnimalList from './animals/AnimalList'
 import LocationList from './Location/LocationList'
 import EmployeeList from './employee/EmployeeList'
 import OwnerList from "./Owners/OwnerList"
+import AnimalManager from "../modules/AnimalManager"
 import "./Kennel.css"
 
 
@@ -20,15 +21,6 @@ export default class ApplicationViews extends Component {
         { id: 2, name: "Nashville South", address: "10101 Binary Court" }
     ]
 
-    animalsFromAPI = [
-        { id: 1, name: "Doodles" },
-        { id: 2, name: "Jack" },
-        { id: 3, name: "Angus" },
-        { id: 4, name: "Henley" },
-        { id: 5, name: "Derkins" },
-        { id: 6, name: "Checkers" }
-    ]
-
     ownersFromAPI = [
         { id: 1, name: "Ricky McConnell", phoneNumber: "330-867-5309" },
         { id: 2, name: "Rob Keller", phoneNumber: "123-456-7890" },
@@ -39,8 +31,18 @@ export default class ApplicationViews extends Component {
     state = {
         employees: this.employeesFromAPI,
         locations: this.locationsFromAPI,
-        animals: this.animalsFromAPI,
+        animals: [],
         owners: this.ownersFromAPI
+    }
+
+    componentDidMount() {
+        const newState = {}
+        AnimalManager.getAll()
+            .then(animals => {
+                console.log("animals", animals);
+                newState.animals = animals
+            })
+            .then(() => this.setState(newState))
     }
 
     render() {
