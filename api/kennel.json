@@ -7,14 +7,6 @@
     {
       "id": 2,
       "name": "Jordan Nelson"
-    },
-    {
-      "id": 3,
-      "name": "Zoe LeBlanc"
-    },
-    {
-      "id": 4,
-      "name": "Blaise Roberts"
     }
   ],
   "animals": [
@@ -62,11 +54,6 @@
       "id": 3,
       "name": "Steven Soundlee",
       "phoneNumber": "765-345-567"
-    },
-    {
-      "id": 4,
-      "name": "Kelly Whitmer",
-      "phoneNumber": "546-764-1035"
     }
   ]
 }

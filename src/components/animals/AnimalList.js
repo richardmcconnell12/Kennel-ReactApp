@@ -13,7 +13,7 @@ export default class AnimalList extends Component {
                 {
                     this.props.animals.map(animal =>
                         < div key={animal.id} >
-                            {animal.name}
+                            <p>{animal.name}</p>
                             <button onClick={() => this.props.deleteAnimal(animal.id)}>Delete</button>
                         </div>
                     )
