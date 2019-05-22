@@ -6,25 +6,38 @@
     },
     {
       "id": 2,
-      "name": "Jordan Nelson"
+      "name": "Willis McGee"
+    },
+    {
+      "id": 3,
+      "name": "Bobby Light"
     }
   ],
   "animals": [
     {
       "id": 1,
-      "name": "Doodles"
+      "name": "Doodles",
+      "breed": "Yellow Lab"
     },
     {
       "id": 2,
-      "name": "Jack"
+      "name": "Angus",
+      "breed": "Shepherd"
     },
     {
       "id": 3,
-      "name": "Angus"
+      "name": "Cleo",
+      "breed": "Pit Bull"
     },
     {
-      "id": 4,
-      "name": "Henley"
+      "id": 5,
+      "name": "Copper",
+      "breed": "Corgi"
+    },
+    {
+      "id": 6,
+      "name": "Stumpy",
+      "breed": "Bull Dog"
     }
   ],
   "locations": [
