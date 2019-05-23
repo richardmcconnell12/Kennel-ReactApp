@@ -10,6 +10,8 @@ import LocationManager from "../modules/LocationsManager"
 import OwnersManager from "../modules/OwnersManager"
 import AnimalDetails from "./animals/AnimalDetails"
 import AnimalForm from "./animals/AnimalForm"
+import EmployeeDetails from "./employee/EmployeeDetails"
+import EmployeeForm from "./employee/EmployeeForm"
 import { withRouter } from 'react-router'
 import "./Kennel.css"
 class ApplicationViews extends Component {
@@ -54,6 +56,15 @@ class ApplicationViews extends Component {
             .then(animals =>
                 this.setState({
                     animals: animals
+                })
+            );
+
+    addEmployee = (employee) =>
+        EmployeeManager.post(employee)
+            .then(() => EmployeeManager.getAll())
+            .then(employees =>
+                this.setState({
+                    employees: employees
                 })
             );
 
@@ -103,17 +114,39 @@ class ApplicationViews extends Component {
                         employees={this.state.employees} />
                 }} />
 
-                <Route path="/employees" render={(props) => {
+                <Route exact path="/employees" render={(props) => {
                     return <EmployeeList employees={this.state.employees}
                         deleteEmployee={this.deleteEmployee} />
                 }} />
+
+                <Route path="/employees/:employeeId(\d+)" render={(props) => {
+                    // Find the employee with the id of the route parameter
+                    let employee = this.state.employees.find(employee =>
+                        employee.id === parseInt(props.match.params.employeeId)
+                    )
+
+                    // If the employee wasn't found, create a default one
+                    if (!employee) {
+                        employee = { id: 404, name: "404", breed: "Employee not found" }
+                    }
+
+                    return <EmployeeDetails employee={employee}
+                        deleteEmployee={this.deleteEmployee} />
+                }} />
+
+                <Route path="/employees/new" render={(props) => {
+                    return <EmployeeForm {...props}
+                        addEmployee={this.addEmployee}
+                        employees={this.state.employees} />
+                }} />
+
                 <Route path="/owners" render={(props) => {
                     return <OwnerList owners={this.state.owners}
                         deleteOwner={this.deleteOwner} />
                 }} />
+
             </React.Fragment>
         )
     }
 }
-
 export default withRouter(ApplicationViews)
