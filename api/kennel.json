@@ -2,7 +2,7 @@
   "employees": [
     {
       "id": 1,
-      "name": "Jessica Younker"
+      "name": "Jessica Yang"
     },
     {
       "id": 2,
@@ -11,10 +11,6 @@
     {
       "id": 3,
       "name": "Bobby Light"
-    },
-    {
-      "name": "Elliot Barnes",
-      "id": 4
     }
   ],
   "animals": [
@@ -29,12 +25,6 @@
       "name": "Copper",
       "breed": "Corgi",
       "employeeId": 1
-    },
-    {
-      "name": "Ruger",
-      "breed": "Shepherd",
-      "employeeId": 2,
-      "id": 6
     }
   ],
   "locations": [
@@ -56,19 +46,9 @@
   ],
   "owners": [
     {
-      "id": 1,
       "name": "Ricky McConnell",
-      "phoneNumber": "330-867-5309"
-    },
-    {
-      "id": 2,
-      "name": "Rob Keller",
-      "phoneNumber": "123-456-7890"
-    },
-    {
-      "id": 3,
-      "name": "Dek Haji",
-      "phoneNumber": "234-754-1236"
+      "phoneNumber": "(330)-867-5309",
+      "id": 1
     }
   ]
 }

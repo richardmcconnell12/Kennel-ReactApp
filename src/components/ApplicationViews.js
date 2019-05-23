@@ -12,6 +12,8 @@ import AnimalDetails from "./animals/AnimalDetails"
 import AnimalForm from "./animals/AnimalForm"
 import EmployeeDetails from "./employee/EmployeeDetails"
 import EmployeeForm from "./employee/EmployeeForm"
+import OwnerDetails from "./Owners/OwnerDetails"
+import OwnerForm from "./Owners/OwnerForm"
 import { withRouter } from 'react-router'
 import "./Kennel.css"
 class ApplicationViews extends Component {
@@ -39,7 +41,10 @@ class ApplicationViews extends Component {
         EmployeeManager.deleteEmployee(id)
             .then(() => EmployeeManager.getAll())
             .then(employees => { newState.employees = employees })
-            .then(() => this.setState(newState));
+            .then(() => {
+                this.props.history.push("/employees")
+                this.setState(newState)
+            });
     }
 
     deleteOwner = (id) => {
@@ -47,7 +52,10 @@ class ApplicationViews extends Component {
         OwnersManager.deleteOwner(id)
             .then(() => OwnersManager.getAll())
             .then(owners => { newState.owners = owners })
-            .then(() => this.setState(newState));
+            .then(() => {
+                this.props.history.push("/owners")
+                this.setState(newState)
+            });
     }
 
     addAnimal = (animal) =>
@@ -65,6 +73,15 @@ class ApplicationViews extends Component {
             .then(employees =>
                 this.setState({
                     employees: employees
+                })
+            );
+
+    addOwner = (owner) =>
+        OwnersManager.post(owner)
+            .then(() => OwnersManager.getAll())
+            .then(owners =>
+                this.setState({
+                    owners: owners
                 })
             );
 
@@ -115,7 +132,8 @@ class ApplicationViews extends Component {
                 }} />
 
                 <Route exact path="/employees" render={(props) => {
-                    return <EmployeeList employees={this.state.employees}
+                    return <EmployeeList {...props}
+                        employees={this.state.employees}
                         deleteEmployee={this.deleteEmployee} />
                 }} />
 
@@ -130,7 +148,8 @@ class ApplicationViews extends Component {
                         employee = { id: 404, name: "404", breed: "Employee not found" }
                     }
 
-                    return <EmployeeDetails employee={employee}
+                    return <EmployeeDetails {...props}
+                        employee={employee}
                         deleteEmployee={this.deleteEmployee} />
                 }} />
 
@@ -140,9 +159,32 @@ class ApplicationViews extends Component {
                         employees={this.state.employees} />
                 }} />
 
-                <Route path="/owners" render={(props) => {
-                    return <OwnerList owners={this.state.owners}
+                <Route exact path="/owners" render={(props) => {
+                    return <OwnerList {...props}
+                        owners={this.state.owners}
                         deleteOwner={this.deleteOwner} />
+                }} />
+
+                <Route path="/owners/:ownerId(\d+)" render={(props) => {
+                    // Find the owner with the id of the route parameter
+                    let owner = this.state.owners.find(owner =>
+                        owner.id === parseInt(props.match.params.ownerId)
+                    )
+
+                    // If the owner wasn't found, create a default one
+                    if (!owner) {
+                        owner = { id: 404, name: "404", animal: "Owner not found" }
+                    }
+
+                    return <OwnerDetails {...props}
+                        owner={owner}
+                        deleteOwner={this.deleteOwner} />
+                }} />
+
+                <Route path="/owners/new" render={(props) => {
+                    return <OwnerForm {...props}
+                        addOwner={this.addOwner}
+                        animals={this.state.owners} />
                 }} />
 
             </React.Fragment>

@@ -11,7 +11,6 @@ export default class AnimalDetails extends Component {
     render() {
         return (
             <section className="animal">
-                {console.log("AnimalDetails")}
                 <div key={this.props.animal.id} className="card--detail mx-auto">
                     <div className="card-body">
                         <h4 className="card-title">
