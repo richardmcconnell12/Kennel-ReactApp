@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+
 
 export default class EmployeeDetails extends Component {
 
@@ -19,7 +19,7 @@ export default class EmployeeDetails extends Component {
                             () => {
                                 this.setState(
                                     { saveDisabled: true },
-                                    () => this.props.deleteEmployee(this.props.animal.id)
+                                    () => this.props.deleteEmployee(this.props.employee.id)
                                 )
                             }
                         }
