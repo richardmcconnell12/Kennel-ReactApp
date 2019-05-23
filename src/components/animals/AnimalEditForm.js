@@ -30,7 +30,6 @@ export default class AnimalEditForm extends Component {
             };
 
             this.props.updateAnimal(editedAnimal)
-                .then(() => this.props.history.push("/animals"))
         }
     }
 

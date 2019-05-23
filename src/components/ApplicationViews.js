@@ -1,4 +1,4 @@
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import React, { Component } from "react"
 import AnimalList from './animals/AnimalList'
 import LocationList from './Location/LocationList'
@@ -15,6 +15,7 @@ import EmployeeForm from "./employee/EmployeeForm"
 import OwnerDetails from "./Owners/OwnerDetails"
 import OwnerForm from "./Owners/OwnerForm"
 import AnimalEditForm from "./animals/AnimalEditForm"
+import Login from "./Authenication/Login"
 import { withRouter } from 'react-router'
 import "./Kennel.css"
 class ApplicationViews extends Component {
@@ -25,6 +26,10 @@ class ApplicationViews extends Component {
         animals: [],
         owners: []
     }
+
+
+    // Check if credentials are in local storage
+    isAuthenticated = () => sessionStorage.getItem("credentials") !== null
 
     deleteAnimal = (id) => {
         const newState = {};
@@ -90,6 +95,7 @@ class ApplicationViews extends Component {
         return AnimalManager.put(editedAnimalObject)
             .then(() => AnimalManager.getAll())
             .then(animals => {
+                this.props.history.push("/animals")
                 this.setState({
                     animals: animals
                 })
@@ -113,6 +119,17 @@ class ApplicationViews extends Component {
     render() {
         return (
             <React.Fragment>
+                <Route path="/login" component={Login} />
+
+                <Route exact path="/employees" render={props => {
+                    if (this.isAuthenticated()) {
+                        return <EmployeeList deleteEmployee={this.deleteEmployee}
+                            employees={this.state.employees} />
+                    } else {
+                        return <Redirect to="/login" />
+                    }
+                }} />
+
                 <Route exact path="/" render={(props) => {
                     return <LocationList locations={this.state.locations} />
                 }} />
@@ -145,12 +162,6 @@ class ApplicationViews extends Component {
                     return <AnimalForm {...props}
                         addAnimal={this.addAnimal}
                         employees={this.state.employees} />
-                }} />
-
-                <Route exact path="/employees" render={(props) => {
-                    return <EmployeeList {...props}
-                        employees={this.state.employees}
-                        deleteEmployee={this.deleteEmployee} />
                 }} />
 
                 <Route path="/employees/:employeeId(\d+)" render={(props) => {
