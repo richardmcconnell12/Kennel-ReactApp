@@ -33,6 +33,15 @@ class AnimalList extends Component {
                                     <h5>{animal.name}</h5>
                                     <p>{animal.breed}</p>
                                     <Link className="nav-link" to={`/animals/${animal.id}`}>Details</Link>
+                                    <button
+                                        type="button"
+                                        className="btn btn-success"
+                                        onClick={() => {
+                                            this.props.history.push(`/animals/${animal.id}/edit`);
+                                        }}
+                                    >
+                                        Edit
+                                    </button>
                                     <button onClick={() => this.props.deleteAnimal(animal.id)}>Delete</button>
                                 </div>
                             </div>

@@ -16,7 +16,7 @@
   "animals": [
     {
       "id": 3,
-      "name": "Cleo",
+      "name": "Cleopatra",
       "breed": "Pit Bull",
       "employeeId": 1
     },
@@ -24,6 +24,18 @@
       "id": 5,
       "name": "Copper",
       "breed": "Corgi",
+      "employeeId": 2
+    },
+    {
+      "id": 6,
+      "name": "Rupert",
+      "breed": "Shepherd",
+      "employeeId": null
+    },
+    {
+      "id": 7,
+      "name": "Oscar",
+      "breed": "Wiener Dog",
       "employeeId": 1
     }
   ],
