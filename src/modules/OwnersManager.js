@@ -15,5 +15,16 @@ export default {
                 "Content-Type": "application/json"
             },
         }).then(e => e.json())
+    },
+
+    post(owner) {
+        console.log(owner)
+        return fetch(`${remoteURL}/owners`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(owner)
+        }).then(e => e.json())
     }
 }

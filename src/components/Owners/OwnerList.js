@@ -1,21 +1,36 @@
 import React, { Component } from 'react'
+import { Link } from "react-router-dom";
+import { withRouter } from 'react-router'
 
-export default class Owners extends Component {
+class OwnerList extends Component {
 
     handleClick = (event) => {
-        console.log("click", event, this.props.owner.id);
         this.props.deleteOwner(this.props.owner.id);
     }
 
     render() {
         return (
             <section className="owners">
+                <div className="ownerButton">
+                    <button type="button"
+                        className="btn btn-success"
+                        onClick={() => {
+                            this.props.history.push("/owners/new")
+                        }
+                        }>
+                        Add Owner
+                    </button>
+                </div>
                 {
                     this.props.owners.map(owner =>
-                        <div key={owner.id}>
-                            <h5>{owner.name}</h5>
-                            <p>{owner.phoneNumber}</p>
-                            <button onClick={() => this.props.deleteOwner(owner.id)}>Delete Owner</button>
+                        < div key={owner.id} className="card">
+                            <div className="card-body">
+                                <h5 className="card-title">
+                                    <p>{owner.name}</p>
+                                    <Link className="nav-link" to={`/owners/${owner.id}`}>Details</Link>
+                                    <button onClick={() => this.props.deleteOwner(owner.id)}>Delete</button>
+                                </h5>
+                            </div>
                         </div>
                     )
                 }
@@ -23,3 +38,4 @@ export default class Owners extends Component {
         )
     }
 }
+export default withRouter(OwnerList)

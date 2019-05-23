@@ -28,13 +28,13 @@ class AnimalList extends Component {
                     this.props.animals.map(animal =>
                         < div key={animal.id} className="card">
                             <div className="card-body">
-                                <h5 className="card-title">
+                                <div className="card-title">
                                     <img src={kennelPup} className="icon--pup" alt="kennel-pup" />
-                                    <p>{animal.name}</p>
-                                    <h6>{animal.breed}</h6>
+                                    <h5>{animal.name}</h5>
+                                    <p>{animal.breed}</p>
                                     <Link className="nav-link" to={`/animals/${animal.id}`}>Details</Link>
                                     <button onClick={() => this.props.deleteAnimal(animal.id)}>Delete</button>
-                                </h5>
+                                </div>
                             </div>
                         </div>
                     )
