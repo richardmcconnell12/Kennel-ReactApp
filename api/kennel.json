@@ -15,29 +15,22 @@
   ],
   "animals": [
     {
-      "id": 1,
-      "name": "Doodles",
-      "breed": "Yellow Lab"
-    },
-    {
-      "id": 2,
-      "name": "Angus",
-      "breed": "Shepherd"
-    },
-    {
       "id": 3,
       "name": "Cleo",
-      "breed": "Pit Bull"
+      "breed": "Pit Bull",
+      "employeeId": 1
     },
     {
       "id": 5,
       "name": "Copper",
-      "breed": "Corgi"
+      "breed": "Corgi",
+      "employeeId": 1
     },
     {
-      "id": 6,
-      "name": "Stumpy",
-      "breed": "Bull Dog"
+      "name": "Ruger",
+      "breed": "Shepherd",
+      "employeeId": 2,
+      "id": 6
     }
   ],
   "locations": [
@@ -50,6 +43,11 @@
       "id": 2,
       "name": "Nashville South",
       "address": "10101 Binary Court"
+    },
+    {
+      "id": 3,
+      "name": "Nashville East",
+      "address": "609 Appaloosa Ct."
     }
   ],
   "owners": [
@@ -65,8 +63,8 @@
     },
     {
       "id": 3,
-      "name": "Steven Soundlee",
-      "phoneNumber": "765-345-567"
+      "name": "Dek Haji",
+      "phoneNumber": "234-754-1236"
     }
   ]
 }

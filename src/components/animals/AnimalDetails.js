@@ -12,7 +12,7 @@ export default class AnimalDetails extends Component {
         return (
             <section className="animal">
                 {console.log("AnimalDetails")}
-                <div key={this.props.animal.id} className="card--detail">
+                <div key={this.props.animal.id} className="card--detail mx-auto">
                     <div className="card-body">
                         <h4 className="card-title">
                             <img src={kennelPup} className="icon--pup--deats" alt="kennel-pup" />
@@ -28,7 +28,7 @@ export default class AnimalDetails extends Component {
                             }
                         }
                             disabled={this.state.saveDisabled}
-                            className="card-link">Delete</button>
+                        >Delete</button>
                     </div>
                 </div>
             </section>

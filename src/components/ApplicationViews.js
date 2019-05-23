@@ -9,6 +9,7 @@ import EmployeeManager from "../modules/EmployeeManager"
 import LocationManager from "../modules/LocationsManager"
 import OwnersManager from "../modules/OwnersManager"
 import AnimalDetails from "./animals/AnimalDetails"
+import AnimalForm from "./animals/AnimalForm"
 import { withRouter } from 'react-router'
 import "./Kennel.css"
 class ApplicationViews extends Component {
@@ -47,6 +48,15 @@ class ApplicationViews extends Component {
             .then(() => this.setState(newState));
     }
 
+    addAnimal = (animal) =>
+        AnimalManager.post(animal)
+            .then(() => AnimalManager.getAll())
+            .then(animals =>
+                this.setState({
+                    animals: animals
+                })
+            );
+
 
     componentDidMount() {
         const newState = {}
@@ -68,7 +78,8 @@ class ApplicationViews extends Component {
                     return <LocationList locations={this.state.locations} />
                 }} />
                 <Route exact path="/animals" render={(props) => {
-                    return <AnimalList animals={this.state.animals} />
+                    return <AnimalList animals={this.state.animals}
+                        deleteAnimal={this.deleteAnimal} />
                 }} />
 
                 <Route path="/animals/:animalId(\d+)" render={(props) => {
@@ -84,6 +95,12 @@ class ApplicationViews extends Component {
 
                     return <AnimalDetails animal={animal}
                         deleteAnimal={this.deleteAnimal} />
+                }} />
+
+                <Route path="/animals/new" render={(props) => {
+                    return <AnimalForm {...props}
+                        addAnimal={this.addAnimal}
+                        employees={this.state.employees} />
                 }} />
 
                 <Route path="/employees" render={(props) => {
