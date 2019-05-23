@@ -48,6 +48,15 @@ class ApplicationViews extends Component {
             .then(() => this.setState(newState));
     }
 
+    addAnimal = (animal) =>
+        AnimalManager.post(animal)
+            .then(() => AnimalManager.getAll())
+            .then(animals =>
+                this.setState({
+                    animals: animals
+                })
+            );
+
 
     componentDidMount() {
         const newState = {}
@@ -69,7 +78,8 @@ class ApplicationViews extends Component {
                     return <LocationList locations={this.state.locations} />
                 }} />
                 <Route exact path="/animals" render={(props) => {
-                    return <AnimalList animals={this.state.animals} />
+                    return <AnimalList animals={this.state.animals}
+                        deleteAnimal={this.deleteAnimal} />
                 }} />
 
                 <Route path="/animals/:animalId(\d+)" render={(props) => {

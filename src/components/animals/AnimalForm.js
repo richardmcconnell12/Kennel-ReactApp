@@ -21,7 +21,6 @@ export default class AnimalForm extends Component {
           invoking the function reference passed from parent component
        */
     constructNewAnimal = evt => {
-        // evt.preventDefault();
         if (this.state.employee === "") {
             window.alert("Please select a caretaker");
         } else {
@@ -81,9 +80,7 @@ export default class AnimalForm extends Component {
                             ))}
                         </select>
                     </div>
-                    <button
-                        // type="submit"
-                        onClick={this.constructNewAnimal}
+                    <button type="button" onClick={this.constructNewAnimal}
                         className="btn btn-primary"
                     >
                         Submit

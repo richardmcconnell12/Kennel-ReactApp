@@ -1,72 +1,70 @@
 {
-    "employees": [
-        {
-            "id": 1,
-            "name": "Jessica Younker"
-        },
-        {
-            "id": 2,
-            "name": "Willis McGee"
-        },
-        {
-            "id": 3,
-            "name": "Bobby Light"
-        }
-    ],
-    "animals": [
-        {
-            "id": 1,
-            "name": "Doodles",
-            "breed": "Yellow Lab"
-        },
-        {
-            "id": 2,
-            "name": "Angus",
-            "breed": "Shepherd"
-        },
-        {
-            "id": 3,
-            "name": "Cleo",
-            "breed": "Pit Bull"
-        },
-        {
-            "id": 5,
-            "name": "Copper",
-            "breed": "Corgi"
-        }
-    ],
-    "locations": [
-        {
-            "id": 1,
-            "name": "Nashville North",
-            "address": "500 Circle Way"
-        },
-        {
-            "id": 2,
-            "name": "Nashville South",
-            "address": "10101 Binary Court"
-        },
-        {
-            "id": 3,
-            "name": "Nashville East",
-            "address": "609 Appaloosa Ct."
-        }
-    ],
-    "owners": [
-        {
-            "id": 1,
-            "name": "Ricky McConnell",
-            "phoneNumber": "330-867-5309"
-        },
-        {
-            "id": 2,
-            "name": "Rob Keller",
-            "phoneNumber": "123-456-7890"
-        },
-        {
-            "id": 3,
-            "name": "Dek Haji",
-            "phoneNumber": "234-754-1236"
-        }
-    ]
+  "employees": [
+    {
+      "id": 1,
+      "name": "Jessica Younker"
+    },
+    {
+      "id": 2,
+      "name": "Willis McGee"
+    },
+    {
+      "id": 3,
+      "name": "Bobby Light"
+    }
+  ],
+  "animals": [
+    {
+      "id": 3,
+      "name": "Cleo",
+      "breed": "Pit Bull",
+      "employeeId": 1
+    },
+    {
+      "id": 5,
+      "name": "Copper",
+      "breed": "Corgi",
+      "employeeId": 1
+    },
+    {
+      "name": "Ruger",
+      "breed": "Shepherd",
+      "employeeId": 2,
+      "id": 6
+    }
+  ],
+  "locations": [
+    {
+      "id": 1,
+      "name": "Nashville North",
+      "address": "500 Circle Way"
+    },
+    {
+      "id": 2,
+      "name": "Nashville South",
+      "address": "10101 Binary Court"
+    },
+    {
+      "id": 3,
+      "name": "Nashville East",
+      "address": "609 Appaloosa Ct."
+    }
+  ],
+  "owners": [
+    {
+      "id": 1,
+      "name": "Ricky McConnell",
+      "phoneNumber": "330-867-5309"
+    },
+    {
+      "id": 2,
+      "name": "Rob Keller",
+      "phoneNumber": "123-456-7890"
+    },
+    {
+      "id": 3,
+      "name": "Dek Haji",
+      "phoneNumber": "234-754-1236"
+    }
+  ]
 }
