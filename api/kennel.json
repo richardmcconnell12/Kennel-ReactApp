@@ -1,50 +1,70 @@
 {
-  "employees": [
-    {
-      "id": 2,
-      "name": "Willis McGee"
-    }
-  ],
-  "animals": [
-    {
-      "name": "Ruger",
-      "breed": "German Shepherd",
-      "employeeId": 2,
-      "id": 1
-    }
-  ],
-  "locations": [
-    {
-      "id": 1,
-      "name": "Nashville North",
-      "address": "500 Circle Way"
-    },
-    {
-      "id": 2,
-      "name": "Nashville South",
-      "address": "10101 Binary Court"
-    },
-    {
-      "id": 3,
-      "name": "Nashville East",
-      "address": "609 Appaloosa Ct."
-    }
-  ],
-  "owners": [
-    {
-      "id": 2,
-      "name": "Brenda",
-      "phoneNumber": "(123)-345-1230"
-    },
-    {
-      "name": "Ricky McConnell",
-      "phoneNumber": "(330)-867-5309",
-      "id": 3
-    },
-    {
-      "name": "Bryan Nilsen",
-      "phoneNumber": "(098)-394-1230",
-      "id": 4
-    }
-  ]
+    "employees": [
+        {
+            "id": 2,
+            "name": "Willis McGee"
+        },
+        {
+            "name": "Dek Haji",
+            "id": 3
+        },
+        {
+            "name": "Rod Watts",
+            "id": 4
+        }
+    ],
+    "animals": [
+        {
+            "name": "Ruger",
+            "breed": "German Shepherd",
+            "employeeId": 2,
+            "id": 1
+        },
+        {
+            "id": 2,
+            "name": "Cleo",
+            "breed": "Corgi",
+            "employeeId": 4
+        },
+        {
+            "name": "Oscar",
+            "breed": "Wiener Dog",
+            "employeeId": 3,
+            "id": 3
+        }
+    ],
+    "locations": [
+        {
+            "id": 1,
+            "name": "Nashville North",
+            "address": "500 Circle Way"
+        },
+        {
+            "id": 2,
+            "name": "Nashville South",
+            "address": "10101 Binary Court"
+        },
+        {
+            "id": 3,
+            "name": "Nashville East",
+            "address": "609 Appaloosa Ct."
+        }
+    ],
+    "owners": [
+        {
+            "id": 2,
+            "name": "Brenda",
+            "phoneNumber": "(123)-345-1230"
+        },
+        {
+            "name": "Ricky McConnell",
+            "phoneNumber": "(330)-867-5309",
+            "id": 3
+        },
+        {
+            "name": "Bryan Nilsen",
+            "phoneNumber": "(098)-394-1230",
+            "id": 4
+        }
+    ]
 }

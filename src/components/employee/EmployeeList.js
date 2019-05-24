@@ -12,15 +12,25 @@ class EmployeeList extends Component {
     render() {
         return (
             <section className="employees">
+                <div className="employeeButton">
+                    <button type="button"
+                        className="btn btn-success"
+                        onClick={() => {
+                            this.props.history.push("/employees/new")
+                        }
+                        }>
+                        Admit Employee
+                    </button>
+                </div>
                 {
                     this.props.employees.map(employee =>
                         <div key={employee.id} className="card card--employee">
                             <div className="card-body">
                                 <h5 className="card-title">
                                     {employee.name}
-                                    <a href="#"
+                                    <button type="button"
                                         onClick={() => this.props.deleteEmployee(employee.id)}
-                                        className="card-link">Delete</a>
+                                        className="card-link">Delete</button>
                                 </h5>
 
                                 <h6 className="card-subtitle mb-2 text-muted">Caretaker For</h6>

@@ -196,7 +196,7 @@ class ApplicationViews extends Component {
                 <Route path="/employees/new" render={(props) => {
                     return <EmployeeForm {...props}
                         addEmployee={this.addEmployee}
-                        employees={this.state.employees} />
+                        animals={this.state.animals} />
                 }} />
 
                 <Route exact path="/owners" render={(props) => {
