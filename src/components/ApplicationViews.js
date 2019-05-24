@@ -15,6 +15,7 @@ import EmployeeForm from "./employee/EmployeeForm"
 import OwnerDetails from "./Owners/OwnerDetails"
 import OwnerForm from "./Owners/OwnerForm"
 import AnimalEditForm from "./animals/AnimalEditForm"
+import OwnerEditForm from "./Owners/OwnerEditForm"
 import Login from "./Authenication/Login"
 import { withRouter } from 'react-router'
 import "./Kennel.css"
@@ -102,6 +103,16 @@ class ApplicationViews extends Component {
             });
     };
 
+    updateOwner = (editedOwnerObject) => {
+        return OwnersManager.put(editedOwnerObject)
+            .then(() => OwnersManager.getAll())
+            .then(owners => {
+                this.props.history.push("/owners")
+                this.setState({
+                    owners: owners
+                })
+            });
+    };
 
     componentDidMount() {
         const newState = {}
@@ -124,7 +135,9 @@ class ApplicationViews extends Component {
                 <Route exact path="/employees" render={props => {
                     if (this.isAuthenticated()) {
                         return <EmployeeList deleteEmployee={this.deleteEmployee}
-                            employees={this.state.employees} />
+                            employees={this.state.employees}
+                            animals={this.state.animals}
+                            deleteAnimal={this.deleteAnimal} />
                     } else {
                         return <Redirect to="/login" />
                     }
@@ -192,7 +205,7 @@ class ApplicationViews extends Component {
                         deleteOwner={this.deleteOwner} />
                 }} />
 
-                <Route path="/owners/:ownerId(\d+)" render={(props) => {
+                <Route exact path="/owners/:ownerId(\d+)" render={(props) => {
                     // Find the owner with the id of the route parameter
                     let owner = this.state.owners.find(owner =>
                         owner.id === parseInt(props.match.params.ownerId)
@@ -207,6 +220,11 @@ class ApplicationViews extends Component {
                         owner={owner}
                         deleteOwner={this.deleteOwner} />
                 }} />
+
+                <Route path="/owners/:ownerId(\d+)/edit" render={props => {
+                    return <OwnerEditForm {...props} owners={this.state.owners} updateOwner={this.updateOwner} />
+                }}
+                />
 
                 <Route path="/owners/new" render={(props) => {
                     return <OwnerForm {...props}

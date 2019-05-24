@@ -4,7 +4,7 @@ export default class EmployeeForm extends Component {
     // Set initial state
     state = {
         name: "",
-        phoneNumber: "",
+        phoneNumber: ""
     };
 
     // Update state whenever an input field is edited

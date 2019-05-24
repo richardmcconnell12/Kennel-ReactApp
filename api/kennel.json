@@ -1,42 +1,16 @@
 {
   "employees": [
     {
-      "id": 1,
-      "name": "Jessica Yang"
-    },
-    {
       "id": 2,
       "name": "Willis McGee"
-    },
-    {
-      "id": 3,
-      "name": "Bobby Light"
     }
   ],
   "animals": [
     {
-      "id": 3,
-      "name": "Cleopatra",
-      "breed": "Pit Bull",
-      "employeeId": 1
-    },
-    {
-      "id": 5,
-      "name": "Copper",
-      "breed": "Corgi Pup",
-      "employeeId": 2
-    },
-    {
-      "id": 6,
-      "name": "Rupert",
-      "breed": "Shepherd",
-      "employeeId": null
-    },
-    {
-      "id": 7,
-      "name": "Oscar",
-      "breed": "Wiener Dog",
-      "employeeId": 1
+      "name": "Ruger",
+      "breed": "German Shepherd",
+      "employeeId": 2,
+      "id": 1
     }
   ],
   "locations": [
@@ -58,9 +32,19 @@
   ],
   "owners": [
     {
+      "id": 2,
+      "name": "Brenda",
+      "phoneNumber": "(123)-345-1230"
+    },
+    {
       "name": "Ricky McConnell",
       "phoneNumber": "(330)-867-5309",
-      "id": 1
+      "id": 3
+    },
+    {
+      "name": "Bryan Nilsen",
+      "phoneNumber": "(098)-394-1230",
+      "id": 4
     }
   ]
 }
