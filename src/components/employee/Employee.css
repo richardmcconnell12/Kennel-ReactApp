@@ -3,12 +3,6 @@
     justify-content: space-evenly;
 }
 
-.employeeButton {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 0 0 10px 0;
-}
-
 .icon--pup {
     width: 50px;
     height: 50px;
