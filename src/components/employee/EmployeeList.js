@@ -25,7 +25,7 @@ class EmployeeList extends Component {
                 {
                     this.props.employees.map(employee =>
                         <div key={employee.id} className="card card--employee">
-                            <div className="card-body">
+                            <div>
                                 <h5 className="card-title">
                                     {employee.name}
                                     <button type="button"
