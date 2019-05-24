@@ -47,6 +47,22 @@ export default class EmployeeForm extends Component {
                             placeholder="Name of Employee"
                         />
                     </div>
+                    <div className="form-group">
+                        <label htmlFor="animal">Assign an animal</label>
+                        <select
+                            defaultValue=""
+                            name="animal"
+                            id="animalId"
+                            onChange={this.handleFieldChange}
+                        >
+                            <option value="">Select an animal</option>
+                            {this.props.animals.map(e => (
+                                <option key={e.id} id={e.id} value={e.id}>
+                                    {e.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
                     <button type="button" onClick={this.constructNewEmployee}
                         className="btn btn-primary"
                     >
