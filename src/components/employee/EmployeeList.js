@@ -19,8 +19,9 @@ class EmployeeList extends Component {
                             this.props.history.push("/employees/new")
                         }
                         }>
-                        Admit Employee
+                        Enter Employee
                     </button>
+                    {/* trying to add edit to employee card*/}
                 </div>
                 {
                     this.props.employees.map(employee =>
@@ -32,6 +33,15 @@ class EmployeeList extends Component {
                                         onClick={() => this.props.deleteEmployee(employee.id)}
                                         className="card-link">Delete</button>
                                 </h5>
+                                <button
+                                    type="button"
+                                    className="btn btn-success"
+                                    onClick={() => {
+                                        this.props.history.push(`/employees/${employee.id}/edit`);
+                                    }}
+                                >
+                                    Edit
+                                    </button>
 
                                 <h6 className="card-subtitle mb-2 text-muted">Caretaker For</h6>
                                 <div className="animals--caretaker">

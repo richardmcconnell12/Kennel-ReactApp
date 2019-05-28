@@ -16,6 +16,7 @@ import OwnerDetails from "./Owners/OwnerDetails"
 import OwnerForm from "./Owners/OwnerForm"
 import AnimalEditForm from "./animals/AnimalEditForm"
 import OwnerEditForm from "./Owners/OwnerEditForm"
+import EmployeeEditForm from "./employee/EmployeeEditForm"
 import Login from "./Authenication/Login"
 import { withRouter } from 'react-router'
 import "./Kennel.css"
@@ -114,6 +115,17 @@ class ApplicationViews extends Component {
             });
     };
 
+    updateEmployee = (editedEmployeeObject) => {
+        return EmployeeManager.put(editedEmployeeObject)
+            .then(() => EmployeeManager.getAll())
+            .then(employees => {
+                this.props.history.push("/employees")
+                this.setState({
+                    employees: employees
+                })
+            });
+    };
+
     componentDidMount() {
         const newState = {}
         AnimalManager.getAll()
@@ -192,6 +204,11 @@ class ApplicationViews extends Component {
                         employee={employee}
                         deleteEmployee={this.deleteEmployee} />
                 }} />
+
+                <Route path="/employees/:employeeId(\d+)/edit" render={props => {
+                    return <EmployeeEditForm {...props} employees={this.state.employees} updateEmployee={this.updateEmployee} animals={this.state.animals} />
+                }}
+                />
 
                 <Route path="/employees/new" render={(props) => {
                     return <EmployeeForm {...props}
